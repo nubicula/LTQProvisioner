@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="vMHostCluster">
+            <h2><span>VM Host Cluster</span> {{vMHostCluster.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Mo Ref</span></dt>
+                <dd>
+                    <span>{{vMHostCluster.moRef}}</span>
+                </dd>
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{vMHostCluster.name}}</span>
+                </dd>
+                <dt><span>Vcenter</span></dt>
+                <dd>
+                    <div *ngIf="vMHostCluster.vcenter">
+                        <a [routerLink]="['/vcenter', vMHostCluster.vcenter?.id, 'view']">{{vMHostCluster.vcenter?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/vm-host-cluster', vMHostCluster.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

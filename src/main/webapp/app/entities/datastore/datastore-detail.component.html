@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="datastore">
+            <h2><span>Datastore</span> {{datastore.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Mo Ref</span></dt>
+                <dd>
+                    <span>{{datastore.moRef}}</span>
+                </dd>
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{datastore.name}}</span>
+                </dd>
+                <dt><span>Wwn</span></dt>
+                <dd>
+                    <span>{{datastore.wwn}}</span>
+                </dd>
+                <dt><span>Storagearray</span></dt>
+                <dd>
+                    <div *ngIf="datastore.storagearray">
+                        <a [routerLink]="['/storage-array', datastore.storagearray?.id, 'view']">{{datastore.storagearray?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span>Datastorecluster</span></dt>
+                <dd>
+                    <div *ngIf="datastore.datastorecluster">
+                        <a [routerLink]="['/datastore-cluster', datastore.datastorecluster?.id, 'view']">{{datastore.datastorecluster?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/datastore', datastore.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
