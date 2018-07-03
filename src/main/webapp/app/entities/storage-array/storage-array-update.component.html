@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-storage-array-heading">Create or edit a Storage Array</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!storageArray.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="storageArray.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="storageArray.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ipAddress">Ip Address</label>
+                    <input type="text" class="form-control" name="ipAddress" id="field_ipAddress"
+                        [(ngModel)]="storageArray.ipAddress" required/>
+                    <div [hidden]="!(editForm.controls.ipAddress?.dirty && editForm.controls.ipAddress?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.ipAddress?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_userName">User Name</label>
+                    <input type="text" class="form-control" name="userName" id="field_userName"
+                        [(ngModel)]="storageArray.userName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_password">Password</label>
+                    <input type="text" class="form-control" name="password" id="field_password"
+                        [(ngModel)]="storageArray.password" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_physicaldatacenter">Physicaldatacenter</label>
+                    <select class="form-control" id="field_physicaldatacenter" name="physicaldatacenter" [(ngModel)]="storageArray.physicaldatacenter" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="physicalDatacenterOption.id === storageArray.physicaldatacenter?.id ? storageArray.physicaldatacenter : physicalDatacenterOption" *ngFor="let physicalDatacenterOption of physicaldatacenters; trackBy: trackPhysicalDatacenterById">{{physicalDatacenterOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

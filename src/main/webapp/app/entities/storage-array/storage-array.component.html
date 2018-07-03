@@ -1,0 +1,66 @@
+<div>
+    <h2 id="page-heading">
+        <span>Storage Arrays</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-storage-array" [routerLink]="['/storage-array/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Storage Array
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="storageArrays">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Name</span></th>
+            <th><span>Ip Address</span></th>
+            <th><span>User Name</span></th>
+            <th><span>Password</span></th>
+            <th><span>Physicaldatacenter</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let storageArray of storageArrays ;trackBy: trackId">
+                <td><a [routerLink]="['/storage-array', storageArray.id, 'view' ]">{{storageArray.id}}</a></td>
+                <td>{{storageArray.name}}</td>
+                <td>{{storageArray.ipAddress}}</td>
+                <td>{{storageArray.userName}}</td>
+                <td>{{storageArray.password}}</td>
+                <td>
+                    <div *ngIf="storageArray.physicaldatacenter">
+                        <a [routerLink]="['../physical-datacenter', storageArray.physicaldatacenter?.id, 'view' ]" >{{storageArray.physicaldatacenter?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/storage-array', storageArray.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/storage-array', storageArray.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'storage-array/'+ storageArray.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
