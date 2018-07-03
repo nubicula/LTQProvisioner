@@ -1,0 +1,56 @@
+{
+    "name": "VMHost",
+    "fields": [
+        {
+            "fieldName": "moRef",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ipAddress",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "physicaldatacenter",
+            "otherEntityName": "physicalDatacenter",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "vmhostcluster",
+            "otherEntityName": "vMHostCluster",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "vmhost",
+            "relationshipName": "datastore",
+            "otherEntityName": "datastore",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "vmhost",
+            "relationshipName": "datastorecluster",
+            "otherEntityName": "datastoreCluster",
+            "otherEntityField": "name",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20180703135255",
+    "entityTableName": "vm_host",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
