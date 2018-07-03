@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="vCenter">
+            <h2><span>V Center</span> {{vCenter.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Mo Ref</span></dt>
+                <dd>
+                    <span>{{vCenter.moRef}}</span>
+                </dd>
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{vCenter.name}}</span>
+                </dd>
+                <dt><span>Ip Address</span></dt>
+                <dd>
+                    <span>{{vCenter.ipAddress}}</span>
+                </dd>
+                <dt><span>User Name</span></dt>
+                <dd>
+                    <span>{{vCenter.userName}}</span>
+                </dd>
+                <dt><span>Password</span></dt>
+                <dd>
+                    <span>{{vCenter.password}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/v-center', vCenter.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

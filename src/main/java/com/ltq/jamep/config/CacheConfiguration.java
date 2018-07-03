@@ -38,6 +38,18 @@ public class CacheConfiguration {
             cm.createCache(com.ltq.jamep.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.ltq.jamep.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.ltq.jamep.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.ltq.jamep.domain.VCenter.class.getName(), jcacheConfiguration);
+            cm.createCache(com.ltq.jamep.domain.PhysicalDatacenter.class.getName(), jcacheConfiguration);
+            cm.createCache(com.ltq.jamep.domain.VMHostCluster.class.getName(), jcacheConfiguration);
+            cm.createCache(com.ltq.jamep.domain.DatastoreCluster.class.getName(), jcacheConfiguration);
+            cm.createCache(com.ltq.jamep.domain.DatastoreCluster.class.getName() + ".vmhosts", jcacheConfiguration);
+            cm.createCache(com.ltq.jamep.domain.VMHost.class.getName(), jcacheConfiguration);
+            cm.createCache(com.ltq.jamep.domain.VMHost.class.getName() + ".datastores", jcacheConfiguration);
+            cm.createCache(com.ltq.jamep.domain.VMHost.class.getName() + ".datastoreclusters", jcacheConfiguration);
+            cm.createCache(com.ltq.jamep.domain.Datastore.class.getName(), jcacheConfiguration);
+            cm.createCache(com.ltq.jamep.domain.Datastore.class.getName() + ".vmhosts", jcacheConfiguration);
+            cm.createCache(com.ltq.jamep.domain.StorageArray.class.getName(), jcacheConfiguration);
+            cm.createCache(com.ltq.jamep.domain.VirtualVolume.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity VirtualVolume.
+    -->
+    <changeSet id="20180703122920-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="datastore_id"
+                                 baseTableName="virtual_volume"
+                                 constraintName="fk_virtual_volume_datastore_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="datastore"/>
+
+        <addForeignKeyConstraint baseColumnNames="virtualvolume_id"
+                                 baseTableName="virtual_volume"
+                                 constraintName="fk_virtual_volume_virtualvolume_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="virtual_volume"/>
+
+        <addForeignKeyConstraint baseColumnNames="storagearray_id"
+                                 baseTableName="virtual_volume"
+                                 constraintName="fk_virtual_volume_storagearray_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="storage_array"/>
+
+    </changeSet>
+</databaseChangeLog>
