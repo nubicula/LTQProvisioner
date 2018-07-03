@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity VMHost.
+    -->
+    <changeSet id="20180703152105-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="physicaldatacenter_id"
+                                 baseTableName="vm_host"
+                                 constraintName="fk_vmhost_physicaldatacenter_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="physical_datacenter"/>
+
+        <addForeignKeyConstraint baseColumnNames="vmhostcluster_id"
+                                 baseTableName="vm_host"
+                                 constraintName="fk_vmhost_vmhostcluster_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="vm_host_cluster"/>
+
+        <addForeignKeyConstraint baseColumnNames="vmhosts_id"
+                                 baseTableName="vmhost_datastore"
+                                 constraintName="fk_vmhost_datastore_vmhosts_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="vm_host"/>
+        <addForeignKeyConstraint baseColumnNames="datastores_id"
+                                 baseTableName="vmhost_datastore"
+                                 constraintName="fk_vmhost_datastore_datastores_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="datastore"/>
+        
+        <addForeignKeyConstraint baseColumnNames="vmhosts_id"
+                                 baseTableName="vmhost_datastorecluster"
+                                 constraintName="fk_vmhost_datastorecluster_vmhosts_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="vm_host"/>
+        <addForeignKeyConstraint baseColumnNames="datastoreclusters_id"
+                                 baseTableName="vmhost_datastorecluster"
+                                 constraintName="fk_vmhost_datastorecluster_datastoreclusters_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="datastore_cluster"/>
+        
+    </changeSet>
+</databaseChangeLog>

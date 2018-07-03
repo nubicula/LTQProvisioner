@@ -1,0 +1,30 @@
+{
+    "name": "VMHostCluster",
+    "fields": [
+        {
+            "fieldName": "moRef",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "vcenter",
+            "otherEntityName": "vcenter",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20180703152103",
+    "entityTableName": "vm_host_cluster",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span>VM Hosts</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-vm-host" [routerLink]="['/vm-host/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new VM Host
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="vMHosts">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Mo Ref</span></th>
+            <th><span>Name</span></th>
+            <th><span>Ip Address</span></th>
+            <th><span>Physicaldatacenter</span></th>
+            <th><span>Vmhostcluster</span></th>
+            <th><span>Datastore</span></th>
+            <th><span>Datastorecluster</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let vMHost of vMHosts ;trackBy: trackId">
+                <td><a [routerLink]="['/vm-host', vMHost.id, 'view' ]">{{vMHost.id}}</a></td>
+                <td>{{vMHost.moRef}}</td>
+                <td>{{vMHost.name}}</td>
+                <td>{{vMHost.ipAddress}}</td>
+                <td>
+                    <div *ngIf="vMHost.physicaldatacenter">
+                        <a [routerLink]="['../physical-datacenter', vMHost.physicaldatacenter?.id, 'view' ]" >{{vMHost.physicaldatacenter?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="vMHost.vmhostcluster">
+                        <a [routerLink]="['../vm-host-cluster', vMHost.vmhostcluster?.id, 'view' ]" >{{vMHost.vmhostcluster?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let datastore of vMHost.datastores; let last = last">
+                            <a class="form-control-static" [routerLink]="['../datastore', datastore?.id, 'view' ]">{{datastore.name}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let datastorecluster of vMHost.datastoreclusters; let last = last">
+                            <a class="form-control-static" [routerLink]="['../datastore-cluster', datastorecluster?.id, 'view' ]">{{datastorecluster.name}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/vm-host', vMHost.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/vm-host', vMHost.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'vm-host/'+ vMHost.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

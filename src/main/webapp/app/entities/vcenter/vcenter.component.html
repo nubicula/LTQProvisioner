@@ -1,0 +1,62 @@
+<div>
+    <h2 id="page-heading">
+        <span>Vcenters</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-vcenter" [routerLink]="['/vcenter/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Vcenter
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="vcenters">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Mo Ref</span></th>
+            <th><span>Name</span></th>
+            <th><span>Ip Address</span></th>
+            <th><span>User Name</span></th>
+            <th><span>Password</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let vcenter of vcenters ;trackBy: trackId">
+                <td><a [routerLink]="['/vcenter', vcenter.id, 'view' ]">{{vcenter.id}}</a></td>
+                <td>{{vcenter.moRef}}</td>
+                <td>{{vcenter.name}}</td>
+                <td>{{vcenter.ipAddress}}</td>
+                <td>{{vcenter.userName}}</td>
+                <td>{{vcenter.password}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/vcenter', vcenter.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/vcenter', vcenter.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'vcenter/'+ vcenter.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
