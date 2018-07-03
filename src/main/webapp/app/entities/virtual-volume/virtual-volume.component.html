@@ -1,0 +1,78 @@
+<div>
+    <h2 id="page-heading">
+        <span>Virtual Volumes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-virtual-volume" [routerLink]="['/virtual-volume/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Virtual Volume
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="virtualVolumes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Name</span></th>
+            <th><span>Wwn</span></th>
+            <th><span>Lun ID</span></th>
+            <th><span>Peer Volume</span></th>
+            <th><span>Datastore</span></th>
+            <th><span>Virtualvolume</span></th>
+            <th><span>Storagearray</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let virtualVolume of virtualVolumes ;trackBy: trackId">
+                <td><a [routerLink]="['/virtual-volume', virtualVolume.id, 'view' ]">{{virtualVolume.id}}</a></td>
+                <td>{{virtualVolume.name}}</td>
+                <td>{{virtualVolume.wwn}}</td>
+                <td>{{virtualVolume.lunID}}</td>
+                <td>{{virtualVolume.peerVolume}}</td>
+                <td>
+                    <div *ngIf="virtualVolume.datastore">
+                        <a [routerLink]="['../datastore', virtualVolume.datastore?.id, 'view' ]" >{{virtualVolume.datastore?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="virtualVolume.virtualvolume">
+                        <a [routerLink]="['../virtual-volume', virtualVolume.virtualvolume?.id, 'view' ]" >{{virtualVolume.virtualvolume?.peerVolume}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="virtualVolume.storagearray">
+                        <a [routerLink]="['../storage-array', virtualVolume.storagearray?.id, 'view' ]" >{{virtualVolume.storagearray?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/virtual-volume', virtualVolume.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/virtual-volume', virtualVolume.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'virtual-volume/'+ virtualVolume.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
