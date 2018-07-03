@@ -1,0 +1,100 @@
+entity VCenter {
+	moRef String,
+	name String,
+    ipAddress String required,
+    userName String,
+    password String
+}
+
+entity PhysicalDatacenter {
+	name String,
+    address String
+}
+
+entity VMHostCluster {
+	moRef String,
+	name String
+}
+
+entity DatastoreCluster {
+	moRef String,
+	name String
+}
+
+entity VMHost {
+	moRef String,
+	name String,
+    ipAddress String,
+}
+
+entity Datastore {
+	moRef String,
+	name String,
+    wwn String
+}
+
+entity DatastoreCluster {
+	moRef String,
+	name String,
+}
+
+entity StorageArray {
+	name String,
+    ipAddress String required,
+    userName String,
+    password String
+}
+
+entity VirtualVolume {
+	name String,
+    wwn String,
+    lunID String,
+    peerVolume String
+}
+
+relationship ManyToOne {
+	VCenter{vmhostcluster} to VMHostCluster
+}
+
+relationship ManyToOne {
+	VMHostCluster{vmhost} to VMHost
+}
+
+relationship ManyToMany {
+	VMHost{datastore} to Datastore
+}
+
+relationship ManyToOne {
+	VMHost{datastorecluster} to DatastoreCluster
+}
+
+relationship ManyToOne {
+	StorageArray{datastore} to Datastore
+}
+
+relationship ManyToOne {
+	DatastoreCluster{datastore} to Datastore
+}
+
+relationship ManyToOne {
+	StorageArray{virtualvolume} to VirtualVolume
+}
+
+relationship ManyToMany {
+	Datastore{virtualvolume} to VirtualVolume
+}
+
+relationship OneToOne {
+	VirtualVolume{virtualvolume} to VirtualVolume
+}
+
+relationship ManyToOne {
+	PhysicalDatacenter{vmhost} to VMHost
+}
+
+relationship ManyToOne {
+	PhysicalDatacenter{storagearray} to StorageArray
+}
+
+
+
