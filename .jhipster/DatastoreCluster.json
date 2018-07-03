@@ -1,0 +1,30 @@
+{
+    "name": "DatastoreCluster",
+    "fields": [
+        {
+            "fieldName": "moRef",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "datastore",
+            "otherEntityName": "datastore",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180703100840",
+    "entityTableName": "datastore_cluster",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

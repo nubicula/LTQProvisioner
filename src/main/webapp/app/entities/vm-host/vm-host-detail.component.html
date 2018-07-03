@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="vMHost">
+            <h2><span>VM Host</span> {{vMHost.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Mo Ref</span></dt>
+                <dd>
+                    <span>{{vMHost.moRef}}</span>
+                </dd>
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{vMHost.name}}</span>
+                </dd>
+                <dt><span>Ip Address</span></dt>
+                <dd>
+                    <span>{{vMHost.ipAddress}}</span>
+                </dd>
+                <dt><span>Datastorecluster</span></dt>
+                <dd>
+                    <div *ngIf="vMHost.datastorecluster">
+                        <a [routerLink]="['/datastore-cluster', vMHost.datastorecluster?.id, 'view']">{{vMHost.datastorecluster?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Datastore</span></dt>
+                <dd>
+                    <span *ngFor="let datastore of vMHost.datastores; let last = last">
+                        <a [routerLink]="['/datastore', datastore?.id, 'view' ]">{{datastore.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/vm-host', vMHost.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

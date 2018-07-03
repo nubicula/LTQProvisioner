@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-virtual-volume-heading">Create or edit a Virtual Volume</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!virtualVolume.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="virtualVolume.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="virtualVolume.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_wwn">Wwn</label>
+                    <input type="text" class="form-control" name="wwn" id="field_wwn"
+                        [(ngModel)]="virtualVolume.wwn" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lunID">Lun ID</label>
+                    <input type="text" class="form-control" name="lunID" id="field_lunID"
+                        [(ngModel)]="virtualVolume.lunID" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_peerVolume">Peer Volume</label>
+                    <input type="text" class="form-control" name="peerVolume" id="field_peerVolume"
+                        [(ngModel)]="virtualVolume.peerVolume" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_virtualvolume">Virtualvolume</label>
+                    <select class="form-control" id="field_virtualvolume" name="virtualvolume" [(ngModel)]="virtualVolume.virtualvolume">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="virtualVolumeOption.id === virtualVolume.virtualvolume?.id ? virtualVolume.virtualvolume : virtualVolumeOption" *ngFor="let virtualVolumeOption of virtualvolumes; trackBy: trackVirtualVolumeById">{{virtualVolumeOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

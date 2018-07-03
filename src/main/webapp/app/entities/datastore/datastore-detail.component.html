@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="datastore">
+            <h2><span>Datastore</span> {{datastore.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Mo Ref</span></dt>
+                <dd>
+                    <span>{{datastore.moRef}}</span>
+                </dd>
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{datastore.name}}</span>
+                </dd>
+                <dt><span>Wwn</span></dt>
+                <dd>
+                    <span>{{datastore.wwn}}</span>
+                </dd>
+                <dt><span>Virtualvolume</span></dt>
+                <dd>
+                    <span *ngFor="let virtualvolume of datastore.virtualvolumes; let last = last">
+                        <a [routerLink]="['/virtual-volume', virtualvolume?.id, 'view' ]">{{virtualvolume.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/datastore', datastore.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

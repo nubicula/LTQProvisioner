@@ -1,0 +1,36 @@
+{
+    "name": "PhysicalDatacenter",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "vmhost",
+            "otherEntityName": "vMHost",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "storagearray",
+            "otherEntityName": "storageArray",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180703100838",
+    "entityTableName": "physical_datacenter",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

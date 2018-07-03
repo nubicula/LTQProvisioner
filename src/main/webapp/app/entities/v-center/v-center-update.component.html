@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-v-center-heading">Create or edit a V Center</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!vCenter.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="vCenter.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_moRef">Mo Ref</label>
+                    <input type="text" class="form-control" name="moRef" id="field_moRef"
+                        [(ngModel)]="vCenter.moRef" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="vCenter.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ipAddress">Ip Address</label>
+                    <input type="text" class="form-control" name="ipAddress" id="field_ipAddress"
+                        [(ngModel)]="vCenter.ipAddress" required/>
+                    <div [hidden]="!(editForm.controls.ipAddress?.dirty && editForm.controls.ipAddress?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.ipAddress?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_userName">User Name</label>
+                    <input type="text" class="form-control" name="userName" id="field_userName"
+                        [(ngModel)]="vCenter.userName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_password">Password</label>
+                    <input type="text" class="form-control" name="password" id="field_password"
+                        [(ngModel)]="vCenter.password" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_vmhostcluster">Vmhostcluster</label>
+                    <select class="form-control" id="field_vmhostcluster" name="vmhostcluster" [(ngModel)]="vCenter.vmhostcluster" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="vMHostClusterOption.id === vCenter.vmhostcluster?.id ? vCenter.vmhostcluster : vMHostClusterOption" *ngFor="let vMHostClusterOption of vmhostclusters; trackBy: trackVMHostClusterById">{{vMHostClusterOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
