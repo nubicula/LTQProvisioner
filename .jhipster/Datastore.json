@@ -1,0 +1,47 @@
+{
+    "name": "Datastore",
+    "fields": [
+        {
+            "fieldName": "moRef",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "wwn",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "storagearray",
+            "otherEntityName": "storageArray",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "datastorecluster",
+            "otherEntityName": "datastoreCluster",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "vmhost",
+            "otherEntityName": "vMHost",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "datastore"
+        }
+    ],
+    "changelogDate": "20180703152106",
+    "entityTableName": "datastore",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
