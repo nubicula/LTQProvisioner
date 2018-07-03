@@ -55,7 +55,7 @@ export class VirtualVolumeUpdateComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
-        this.virtualVolumeService.query({ filter: 'virtualvolume(name)-is-null' }).subscribe(
+        this.virtualVolumeService.query({ filter: 'virtualvolumepeer(name)-is-null' }).subscribe(
             (res: HttpResponse<IVirtualVolume[]>) => {
                 if (!this.virtualVolume.virtualvolume || !this.virtualVolume.virtualvolume.id) {
                     this.virtualvolumes = res.body;
