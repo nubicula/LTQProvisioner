@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-vm-host-heading">Create or edit a VM Host</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!vMHost.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="vMHost.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_moRef">Mo Ref</label>
+                    <input type="text" class="form-control" name="moRef" id="field_moRef"
+                        [(ngModel)]="vMHost.moRef" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="vMHost.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_ipAddress">Ip Address</label>
+                    <input type="text" class="form-control" name="ipAddress" id="field_ipAddress"
+                        [(ngModel)]="vMHost.ipAddress" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_physicaldatacenter">Physicaldatacenter</label>
+                    <select class="form-control" id="field_physicaldatacenter" name="physicaldatacenter" [(ngModel)]="vMHost.physicaldatacenter" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="physicalDatacenterOption.id === vMHost.physicaldatacenter?.id ? vMHost.physicaldatacenter : physicalDatacenterOption" *ngFor="let physicalDatacenterOption of physicaldatacenters; trackBy: trackPhysicalDatacenterById">{{physicalDatacenterOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_vmhostcluster">Vmhostcluster</label>
+                    <select class="form-control" id="field_vmhostcluster" name="vmhostcluster" [(ngModel)]="vMHost.vmhostcluster" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="vMHostClusterOption.id === vMHost.vmhostcluster?.id ? vMHost.vmhostcluster : vMHostClusterOption" *ngFor="let vMHostClusterOption of vmhostclusters; trackBy: trackVMHostClusterById">{{vMHostClusterOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_datastore">Datastore</label>
+                    <select class="form-control" id="field_datastore" multiple name="datastore" [(ngModel)]="vMHost.datastores">
+                        <option [ngValue]="getSelected(vMHost.datastores, datastoreOption)" *ngFor="let datastoreOption of datastores; trackBy: trackDatastoreById">{{datastoreOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_datastorecluster">Datastorecluster</label>
+                    <select class="form-control" id="field_datastorecluster" multiple name="datastorecluster" [(ngModel)]="vMHost.datastoreclusters">
+                        <option [ngValue]="getSelected(vMHost.datastoreclusters, datastoreClusterOption)" *ngFor="let datastoreClusterOption of datastoreclusters; trackBy: trackDatastoreClusterById">{{datastoreClusterOption.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
