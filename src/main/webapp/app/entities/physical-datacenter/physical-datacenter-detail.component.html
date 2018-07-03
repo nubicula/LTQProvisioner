@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="physicalDatacenter">
+            <h2><span>Physical Datacenter</span> {{physicalDatacenter.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{physicalDatacenter.name}}</span>
+                </dd>
+                <dt><span>Address</span></dt>
+                <dd>
+                    <span>{{physicalDatacenter.address}}</span>
+                </dd>
+                <dt><span>Vmhost</span></dt>
+                <dd>
+                    <div *ngIf="physicalDatacenter.vmhost">
+                        <a [routerLink]="['/vm-host', physicalDatacenter.vmhost?.id, 'view']">{{physicalDatacenter.vmhost?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Storagearray</span></dt>
+                <dd>
+                    <div *ngIf="physicalDatacenter.storagearray">
+                        <a [routerLink]="['/storage-array', physicalDatacenter.storagearray?.id, 'view']">{{physicalDatacenter.storagearray?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/physical-datacenter', physicalDatacenter.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
