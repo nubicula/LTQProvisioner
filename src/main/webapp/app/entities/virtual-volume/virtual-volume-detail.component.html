@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="virtualVolume">
+            <h2><span>Virtual Volume</span> {{virtualVolume.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{virtualVolume.name}}</span>
+                </dd>
+                <dt><span>Wwn</span></dt>
+                <dd>
+                    <span>{{virtualVolume.wwn}}</span>
+                </dd>
+                <dt><span>Lun ID</span></dt>
+                <dd>
+                    <span>{{virtualVolume.lunID}}</span>
+                </dd>
+                <dt><span>Peer Volume</span></dt>
+                <dd>
+                    <span>{{virtualVolume.peerVolume}}</span>
+                </dd>
+                <dt><span>Datastore</span></dt>
+                <dd>
+                    <div *ngIf="virtualVolume.datastore">
+                        <a [routerLink]="['/datastore', virtualVolume.datastore?.id, 'view']">{{virtualVolume.datastore?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span>Virtualvolume</span></dt>
+                <dd>
+                    <div *ngIf="virtualVolume.virtualvolume">
+                        <a [routerLink]="['/virtual-volume', virtualVolume.virtualvolume?.id, 'view']">{{virtualVolume.virtualvolume?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span>Storagearray</span></dt>
+                <dd>
+                    <div *ngIf="virtualVolume.storagearray">
+                        <a [routerLink]="['/storage-array', virtualVolume.storagearray?.id, 'view']">{{virtualVolume.storagearray?.name}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/virtual-volume', virtualVolume.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
