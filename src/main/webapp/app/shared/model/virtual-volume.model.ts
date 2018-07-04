@@ -9,7 +9,7 @@ export interface IVirtualVolume {
     lunID?: string;
     peerVolume?: string;
     datastore?: IDatastore;
-    virtualvolume?: IVirtualVolume;
+    virtualvolumepeer?: IVirtualVolume;
     storagearray?: IStorageArray;
     virtualvolume?: IVirtualVolume;
 }
@@ -22,7 +22,7 @@ export class VirtualVolume implements IVirtualVolume {
         public lunID?: string,
         public peerVolume?: string,
         public datastore?: IDatastore,
-        public virtualvolume?: IVirtualVolume,
+        public virtualvolumepeer?: IVirtualVolume,
         public storagearray?: IStorageArray,
         public virtualvolume?: IVirtualVolume
     ) {}

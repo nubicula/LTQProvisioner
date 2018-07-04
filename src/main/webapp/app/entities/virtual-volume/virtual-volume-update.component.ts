@@ -21,7 +21,7 @@ export class VirtualVolumeUpdateComponent implements OnInit {
 
     datastores: IDatastore[];
 
-    virtualvolumes: IVirtualVolume[];
+    virtualvolumepeers: IVirtualVolume[];
 
     storagearrays: IStorageArray[];
 
@@ -57,12 +57,12 @@ export class VirtualVolumeUpdateComponent implements OnInit {
         );
         this.virtualVolumeService.query({ filter: 'virtualvolume(name)-is-null' }).subscribe(
             (res: HttpResponse<IVirtualVolume[]>) => {
-                if (!this.virtualVolume.virtualvolume || !this.virtualVolume.virtualvolume.id) {
-                    this.virtualvolumes = res.body;
+                if (!this.virtualVolume.virtualvolumepeer || !this.virtualVolume.virtualvolumepeer.id) {
+                    this.virtualvolumepeers = res.body;
                 } else {
-                    this.virtualVolumeService.find(this.virtualVolume.virtualvolume.id).subscribe(
+                    this.virtualVolumeService.find(this.virtualVolume.virtualvolumepeer.id).subscribe(
                         (subRes: HttpResponse<IVirtualVolume>) => {
-                            this.virtualvolumes = [subRes.body].concat(res.body);
+                            this.virtualvolumepeers = [subRes.body].concat(res.body);
                         },
                         (subRes: HttpErrorResponse) => this.onError(subRes.message)
                     );

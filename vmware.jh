@@ -89,7 +89,7 @@ relationship OneToOne {
 }
 
 relationship OneToOne {
-	VirtualVolume{virtualvolume(peerVolume)} to VirtualVolume{virtualvolume(name)}
+	VirtualVolume{virtualvolumepeer(peerVolume)} to VirtualVolume{virtualvolume(name)}
 }
 
 relationship ManyToOne {

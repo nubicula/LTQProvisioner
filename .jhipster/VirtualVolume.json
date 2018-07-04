@@ -29,7 +29,7 @@
         },
         {
             "relationshipType": "one-to-one",
-            "relationshipName": "virtualvolume",
+            "relationshipName": "virtualvolumepeer",
             "otherEntityName": "virtualVolume",
             "otherEntityField": "peerVolume",
             "ownerSide": true,
@@ -46,7 +46,7 @@
             "relationshipName": "virtualvolume",
             "otherEntityName": "virtualVolume",
             "ownerSide": false,
-            "otherEntityRelationshipName": "virtualvolume"
+            "otherEntityRelationshipName": "virtualvolumepeer"
         }
     ],
     "changelogDate": "20180703153200",

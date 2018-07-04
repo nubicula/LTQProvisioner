@@ -38,10 +38,10 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" for="field_virtualvolume">Virtualvolume</label>
-                    <select class="form-control" id="field_virtualvolume" name="virtualvolume" [(ngModel)]="virtualVolume.virtualvolume">
+                    <label class="form-control-label" for="field_virtualvolumepeer">Virtualvolumepeer</label>
+                    <select class="form-control" id="field_virtualvolumepeer" name="virtualvolumepeer" [(ngModel)]="virtualVolume.virtualvolumepeer">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="virtualVolumeOption.id === virtualVolume.virtualvolume?.id ? virtualVolume.virtualvolume : virtualVolumeOption" *ngFor="let virtualVolumeOption of virtualvolumes; trackBy: trackVirtualVolumeById">{{virtualVolumeOption.peerVolume}}</option>
+                        <option [ngValue]="virtualVolumeOption.id === virtualVolume.virtualvolumepeer?.id ? virtualVolume.virtualvolumepeer : virtualVolumeOption" *ngFor="let virtualVolumeOption of virtualvolumepeers; trackBy: trackVirtualVolumeById">{{virtualVolumeOption.peerVolume}}</option>
                     </select>
                 </div>
                 <div class="form-group">

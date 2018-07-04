@@ -39,7 +39,7 @@
             </column>
             <column name="datastore_id" type="bigint">
                 <constraints unique="true" nullable="true" />
-            </column>            <column name="virtualvolume_id" type="bigint">
+            </column>            <column name="virtualvolumepeer_id" type="bigint">
                 <constraints unique="true" nullable="true" />
             </column>
             <column name="storagearray_id" type="bigint">
