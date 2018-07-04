@@ -87,11 +87,11 @@ public class VirtualVolumeResource {
     @GetMapping("/virtual-volumes")
     @Timed
     public List<VirtualVolume> getAllVirtualVolumes(@RequestParam(required = false) String filter) {
-        if ("virtualvolume-is-null".equals(filter)) {
-            log.debug("REST request to get all VirtualVolumes where virtualvolume is null");
+        if ("virtualvolumepeer-is-null".equals(filter)) {
+            log.debug("REST request to get all VirtualVolumes where virtualvolumepeer is null");
             return StreamSupport
                 .stream(virtualVolumeRepository.findAll().spliterator(), false)
-                .filter(virtualVolume -> virtualVolume.getVirtualvolume() == null)
+                .filter(virtualVolume -> virtualVolume.getVirtualvolumepeer() == null)
                 .collect(Collectors.toList());
         }
         log.debug("REST request to get all VirtualVolumes");

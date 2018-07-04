@@ -33,7 +33,7 @@
             "otherEntityName": "virtualVolume",
             "otherEntityField": "peerVolume",
             "ownerSide": true,
-            "otherEntityRelationshipName": "virtualvolume(name)"
+            "otherEntityRelationshipName": "virtualvolumepeer(name)"
         },
         {
             "relationshipType": "many-to-one",
@@ -43,7 +43,7 @@
         },
         {
             "relationshipType": "one-to-one",
-            "relationshipName": "virtualvolume",
+            "relationshipName": "virtualvolumepeer",
             "otherEntityName": "virtualVolume",
             "ownerSide": false,
             "otherEntityRelationshipName": "virtualvolume"

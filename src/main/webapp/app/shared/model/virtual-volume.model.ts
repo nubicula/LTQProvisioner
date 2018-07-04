@@ -11,7 +11,7 @@ export interface IVirtualVolume {
     datastore?: IDatastore;
     virtualvolume?: IVirtualVolume;
     storagearray?: IStorageArray;
-    virtualvolume?: IVirtualVolume;
+    virtualvolumepeer?: IVirtualVolume;
 }
 
 export class VirtualVolume implements IVirtualVolume {
@@ -24,6 +24,6 @@ export class VirtualVolume implements IVirtualVolume {
         public datastore?: IDatastore,
         public virtualvolume?: IVirtualVolume,
         public storagearray?: IStorageArray,
-        public virtualvolume?: IVirtualVolume
+        public virtualvolumepeer?: IVirtualVolume
     ) {}
 }
