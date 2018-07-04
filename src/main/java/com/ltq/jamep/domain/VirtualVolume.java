@@ -50,7 +50,7 @@ public class VirtualVolume implements Serializable {
 
     @OneToOne(mappedBy = "virtualvolume")
     @JsonIgnore
-    private VirtualVolume virtualvolume;
+    private VirtualVolume virtualvolumepeer;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -152,17 +152,17 @@ public class VirtualVolume implements Serializable {
         this.storagearray = storageArray;
     }
 
-    public VirtualVolume getVirtualvolume() {
-        return virtualvolume;
+    public VirtualVolume getVirtualvolumepeer() {
+        return virtualvolumepeer;
     }
 
-    public VirtualVolume virtualvolume(VirtualVolume virtualVolume) {
-        this.virtualvolume = virtualVolume;
+    public VirtualVolume virtualvolumepeer(VirtualVolume virtualVolume) {
+        this.virtualvolumepeer = virtualVolume;
         return this;
     }
 
-    public void setVirtualvolume(VirtualVolume virtualVolume) {
-        this.virtualvolume = virtualVolume;
+    public void setVirtualvolumepeer(VirtualVolume virtualVolume) {
+        this.virtualvolumepeer = virtualVolume;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
