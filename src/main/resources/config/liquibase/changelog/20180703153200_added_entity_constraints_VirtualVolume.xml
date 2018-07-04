@@ -14,9 +14,9 @@
                                  referencedColumnNames="id"
                                  referencedTableName="datastore"/>
 
-        <addForeignKeyConstraint baseColumnNames="virtualvolume_id"
+        <addForeignKeyConstraint baseColumnNames="virtualvolumepeer_id"
                                  baseTableName="virtual_volume"
-                                 constraintName="fk_virtual_volume_virtualvolume_id"
+                                 constraintName="fk_virtual_volume_virtualvolumepeer_id"
                                  referencedColumnNames="id"
                                  referencedTableName="virtual_volume"/>
 

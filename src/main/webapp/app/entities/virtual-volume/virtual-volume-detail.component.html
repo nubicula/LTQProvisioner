@@ -27,10 +27,10 @@
                         <a [routerLink]="['/datastore', virtualVolume.datastore?.id, 'view']">{{virtualVolume.datastore?.name}}</a>
                     </div>
                 </dd>
-                <dt><span>Virtualvolume</span></dt>
+                <dt><span>Virtualvolumepeer</span></dt>
                 <dd>
-                    <div *ngIf="virtualVolume.virtualvolume">
-                        <a [routerLink]="['/virtual-volume', virtualVolume.virtualvolume?.id, 'view']">{{virtualVolume.virtualvolume?.peerVolume}}</a>
+                    <div *ngIf="virtualVolume.virtualvolumepeer">
+                        <a [routerLink]="['/virtual-volume', virtualVolume.virtualvolumepeer?.id, 'view']">{{virtualVolume.virtualvolumepeer?.peerVolume}}</a>
                     </div>
                 </dd>
                 <dt><span>Storagearray</span></dt>

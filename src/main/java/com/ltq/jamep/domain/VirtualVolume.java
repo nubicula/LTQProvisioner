@@ -42,13 +42,13 @@ public class VirtualVolume implements Serializable {
 
     @OneToOne
     @JoinColumn(unique = true)
-    private VirtualVolume virtualvolume;
+    private VirtualVolume virtualvolumepeer;
 
     @ManyToOne
     @JsonIgnoreProperties("")
     private StorageArray storagearray;
 
-    @OneToOne(mappedBy = "virtualvolume")
+    @OneToOne(mappedBy = "virtualvolumepeer")
     @JsonIgnore
     private VirtualVolume virtualvolume;
 
@@ -126,17 +126,17 @@ public class VirtualVolume implements Serializable {
         this.datastore = datastore;
     }
 
-    public VirtualVolume getVirtualvolume() {
-        return virtualvolume;
+    public VirtualVolume getVirtualvolumepeer() {
+        return virtualvolumepeer;
     }
 
-    public VirtualVolume virtualvolume(VirtualVolume virtualVolume) {
-        this.virtualvolume = virtualVolume;
+    public VirtualVolume virtualvolumepeer(VirtualVolume virtualVolume) {
+        this.virtualvolumepeer = virtualVolume;
         return this;
     }
 
-    public void setVirtualvolume(VirtualVolume virtualVolume) {
-        this.virtualvolume = virtualVolume;
+    public void setVirtualvolumepeer(VirtualVolume virtualVolume) {
+        this.virtualvolumepeer = virtualVolume;
     }
 
     public StorageArray getStoragearray() {
